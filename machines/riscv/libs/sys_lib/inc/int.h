@@ -43,12 +43,7 @@
  */
 static inline void int_disable(void) {
 #ifdef __riscv__
-  // read-modify-write
-  int mstatus;
-  asm volatile ("csrr %0, mstatus": "=r" (mstatus));
-  mstatus &= 0xFFFFFFFE;
-  asm volatile ("csrw mstatus, %0" : /* no output */ : "r" (mstatus));
-  asm("csrw 0x300, %0" : : "r" (0x0) );
+  asm("csrci mstatus, 1" : : );
 #else
   mtspr(SPR_SR, mfspr(SPR_SR) & (~SPR_SR_IEE));
 #endif
