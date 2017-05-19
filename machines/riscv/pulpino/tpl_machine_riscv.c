@@ -188,11 +188,11 @@ void tpl_shutdown ()
 
 // Software Interruptions
 __attribute__ ((weak))
-void SIGTERM_Handler (void){ for(;;); }	
+FUNC(void, OS_CODE) SIGTERM_Handler (P2CONST(void, OS_APPL_DATA, AUTOMATIC) a){ for(;;); }	
 __attribute__ ((weak))
-void SIGUSR2_Handler (void){ for(;;); }	
+FUNC(void, OS_CODE) SIGUSR2_Handler (P2CONST(void, OS_APPL_DATA, AUTOMATIC) a){ for(;;); }	
 __attribute__ ((weak))
-void SIGPIPE_Handler (void){ for(;;); }	
+FUNC(void, OS_CODE) SIGPIPE_Handler (P2CONST(void, OS_APPL_DATA, AUTOMATIC) a){ for(;;); }	
 
 
 #define OS_STOP_SEC_CODE
